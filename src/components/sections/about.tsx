@@ -53,7 +53,7 @@ export function About() {
                             </div>
                             <div className="pt-8">
                                 <Button size="lg" className="rounded-full gap-2 px-8 py-6 text-lg" asChild>
-                                    <a href="/resume.pdf" download="Muhammed_Fayiz_Resume">
+                                    <a href="https://drive.google.com/file/d/1V0nR-2NJkBAr-ge6qKjEedVgE0T0uVuI/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
                                         <Download className="h-6 w-6" /> Download Resume
                                     </a>
                                 </Button>

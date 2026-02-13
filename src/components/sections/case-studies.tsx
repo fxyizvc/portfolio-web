@@ -2,134 +2,122 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
 
 const projects = [
     {
         id: 1,
         title: "AI-Powered AR Game Platform",
-        description: "A smart AR platform that transforms hand-drawn sketches into real-time interactive games like Snake, Maze, and Tetris using gesture recognition and deep learning.",
         category: "AI/AR",
-        image: "https://images.unsplash.com/photo-1633126786888-06752d921356?w=800&q=80",
-        tags: ["Python", "YOLO V8", "AR Technology", "Computer Vision"],
+        description: "Transforming sketches into real-time games.",
+        image: "https://images.unsplash.com/photo-1633126786888-06752d921356?w=1200&q=80",
         repoLink: "https://github.com/fayizvc/AI-AR-Gaming-Platform",
+        year: "2024"
     },
     {
         id: 2,
         title: "AI AR Memory Palace",
-        description: "An intelligent AR platform for educational environments that transforms blackboards into interactive 3D learning spaces using On-Device Edge AI and MobileNet SSD.",
         category: "AI/AR",
-        image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&q=80",
-        tags: ["Unity", "TensorFlow Lite", "MongoDB", "Node.js", "Edge AI"],
+        description: "Interactive 3D learning spaces on blackboards.",
+        image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=1200&q=80",
         repoLink: "https://github.com/fxyizvc/ai-ar-memory-palace",
+        year: "2024"
     },
     {
         id: 3,
         title: "Hisense Tornado 3.0 Remote",
-        description: "An Android application that emulates a physical remote for Hisense Tornado TVs using the Bluetooth Human Interface Device (HID) profile.",
         category: "Mobile",
-        image: "https://images.unsplash.com/photo-1551655510-555dc3be8633?w=800&q=80",
-        tags: ["Android SDK", "Bluetooth HID", "Java/Kotlin"],
+        description: "Bluetooth HID remote emulator for Android.",
+        image: "https://images.unsplash.com/photo-1551655510-555dc3be8633?w=1200&q=80",
         repoLink: "https://github.com/fxyizvc/bluetooth-remote-app",
+        year: "2023"
     },
 ];
 
-const categories = ["All", "AI/AR", "Mobile"];
-
 export function CaseStudies() {
-    const [filter, setFilter] = useState("All");
-
-    const filteredProjects = projects.filter(
-        (project) => filter === "All" || project.category === filter
-    );
+    const [activeProject, setActiveProject] = useState<number | null>(null);
 
     return (
-        <section className="py-24" id="projects">
-            <div className="container">
-                <div className="flex flex-col items-center text-center mb-16 gap-8">
-                    <div>
-                        <h2 className="text-3xl font-bold tracking-tight font-heading sm:text-4xl text-gradient mb-4">
-                            Selected Works
-                        </h2>
-                        <p className="text-muted-foreground max-w-xl mx-auto">
-                            A showcase of my improved reality. From Augmented Reality to native mobile applications.
-                        </p>
-                    </div>
+        <section className="py-32 relative" id="projects">
+            <div className="container relative z-20">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-20 space-y-4"
+                >
+                    <h2 className="text-4xl md:text-5xl font-bold font-heading">
+                        Selected Works<span className="text-primary">.</span>
+                    </h2>
+                    <p className="text-muted-foreground max-w-xl text-lg">
+                        A curation of experiments and functional applications.
+                    </p>
+                </motion.div>
 
-                    <div className="flex flex-wrap justify-center gap-2 p-1 bg-secondary/50 backdrop-blur-sm rounded-full">
-                        {categories.map((category) => (
-                            <button
-                                key={category}
-                                onClick={() => setFilter(category)}
-                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${filter === category
-                                    ? "bg-background shadow-sm text-foreground"
-                                    : "text-muted-foreground hover:text-foreground"
-                                    }`}
-                            >
-                                {category}
-                            </button>
-                        ))}
-                    </div>
-                </div>
+                <div className="flex flex-col">
+                    {projects.map((project) => (
+                        <motion.a
+                            href={project.repoLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            key={project.id}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: project.id * 0.1 }}
+                            onMouseEnter={() => setActiveProject(project.id)}
+                            onMouseLeave={() => setActiveProject(null)}
+                            className="group relative border-t border-white/10 py-12 md:py-16 flex flex-col md:flex-row md:items-center justify-between gap-6 transition-all hover:px-8"
+                        >
+                            {/* Hover Background for List Item */}
+                            <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <AnimatePresence mode="popLayout">
-                        {filteredProjects.map((project) => (
-                            <motion.div
-                                key={project.id}
-                                layout
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.9 }}
-                                transition={{ duration: 0.3 }}
-                            >
-                                <div className="group relative overflow-hidden rounded-3xl bg-card border border-border/50 hover:border-primary/50 transition-colors h-full flex flex-col hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300">
-                                    <div className="aspect-video relative overflow-hidden">
-                                        <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                        <img
-                                            src={project.image}
-                                            alt={project.title}
-                                            className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700"
-                                        />
-                                    </div>
-
-                                    <div className="p-8 flex-1 flex flex-col">
-                                        <div className="flex justify-between items-start mb-6">
-                                            <div>
-                                                <span className="text-sm font-semibold text-primary mb-3 block tracking-wide">{project.category}</span>
-                                                <h3 className="text-2xl font-bold mb-2 leading-tight">{project.title}</h3>
-                                            </div>
-                                        </div>
-
-                                        <p className="text-base text-muted-foreground mb-8 flex-1 leading-relaxed">
-                                            {project.description}
-                                        </p>
-
-                                        <div className="flex items-center justify-between mt-auto">
-                                            <div className="flex flex-wrap gap-2">
-                                                {project.tags.map((tag) => (
-                                                    <span key={tag} className="text-sm bg-secondary/50 px-3 py-1.5 rounded-md text-muted-foreground font-medium">
-                                                        {tag}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                            <a
-                                                href={project.repoLink}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="p-3 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300"
-                                            >
-                                                <Github className="h-8 w-8" />
-                                            </a>
-                                        </div>
-                                    </div>
+                            <div className="space-y-2 relative z-10">
+                                <div className="flex items-center gap-4 text-sm text-primary font-mono tracking-wider uppercase">
+                                    <span>{project.category}</span>
+                                    <span className="w-1 h-1 rounded-full bg-primary" />
+                                    <span>{project.year}</span>
                                 </div>
-                            </motion.div>
-                        ))}
-                    </AnimatePresence>
+                                <h3 className="text-3xl md:text-6xl font-black font-heading tracking-tight text-foreground/80 group-hover:text-white transition-colors">
+                                    {project.title}
+                                </h3>
+                            </div>
+
+                            <div className="flex items-center gap-8 relative z-10 opacity-60 group-hover:opacity-100 transition-opacity">
+                                <p className="hidden md:block text-muted-foreground max-w-sm text-right font-sans">
+                                    {project.description}
+                                </p>
+                                <div className="h-12 w-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all duration-300 transform group-hover:rotate-45">
+                                    <ArrowUpRight className="h-6 w-6 text-foreground group-hover:text-white" />
+                                </div>
+                            </div>
+                        </motion.a>
+                    ))}
+                    <div className="border-t border-white/10" />
                 </div>
+            </div>
+
+            {/* Cinematic Background Hover Effect */}
+            <div className="fixed inset-0 z-0 pointer-events-none">
+                <AnimatePresence mode="wait">
+                    {activeProject && (
+                        <motion.div
+                            key={activeProject}
+                            initial={{ opacity: 0, scale: 1.1 }}
+                            animate={{ opacity: 0.15, scale: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.5 }}
+                            className="absolute inset-0"
+                        >
+                            <img
+                                src={projects.find(p => p.id === activeProject)?.image}
+                                alt="Background Preview"
+                                className="w-full h-full object-cover grayscale"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
         </section>
     );
