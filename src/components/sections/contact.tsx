@@ -53,7 +53,7 @@ export function Contact() {
                         </p>
 
                         <div className="flex flex-col gap-6">
-                            <a href="mailto:faisvc916@gmail.com" className="flex items-center gap-4 group">
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=faisvc916@gmail.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
                                 <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
                                     <Mail className="h-6 w-6" />
                                 </div>

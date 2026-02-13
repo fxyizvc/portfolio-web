@@ -26,7 +26,7 @@ export default function Home() {
           <div className="flex gap-4 text-muted-foreground">
             <a href="https://www.linkedin.com/in/fayizvc" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">LinkedIn</a>
             <a href="https://www.github.com/fxyizvc" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">GitHub</a>
-            <a href="mailto:faisvc916@gmail.com" className="hover:text-foreground transition-colors">Email</a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=faisvc916@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Email</a>
           </div>
         </div>
       </footer>

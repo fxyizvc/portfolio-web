@@ -23,7 +23,7 @@ const projects = [
         category: "AI/AR",
         image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&q=80",
         tags: ["Unity", "TensorFlow Lite", "MongoDB", "Node.js", "Edge AI"],
-        repoLink: "https://github.com/fxyizvc/smart-blackboard-ar",
+        repoLink: "https://github.com/fxyizvc/ai-ar-memory-palace",
     },
     {
         id: 3,
@@ -32,7 +32,7 @@ const projects = [
         category: "Mobile",
         image: "https://images.unsplash.com/photo-1551655510-555dc3be8633?w=800&q=80",
         tags: ["Android SDK", "Bluetooth HID", "Java/Kotlin"],
-        repoLink: "https://github.com/fxyizvc/hisense-bluetooth-remote",
+        repoLink: "https://github.com/fxyizvc/bluetooth-remote-app",
     },
 ];
 

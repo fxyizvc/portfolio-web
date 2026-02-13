@@ -46,7 +46,7 @@ export function Navbar() {
                             </a>
                         </Button>
                         <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" asChild>
-                            <a href="mailto:faisvc916@gmail.com">
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=faisvc916@gmail.com" target="_blank" rel="noopener noreferrer">
                                 <Mail className="h-4 w-4" />
                             </a>
                         </Button>
