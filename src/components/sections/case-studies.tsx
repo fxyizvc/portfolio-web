@@ -19,7 +19,7 @@ const projects = [
         title: "AI AR Memory Palace",
         category: "AI/AR",
         description: "Interactive 3D learning spaces on blackboards.",
-        image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=1200&q=80",
+        image: "/images/projects/memory-palace.png",
         repoLink: "https://github.com/fxyizvc/ai-ar-memory-palace",
         year: "2024"
     },
@@ -28,7 +28,7 @@ const projects = [
         title: "Hisense Tornado 3.0 Remote",
         category: "Mobile",
         description: "Bluetooth HID remote emulator for Android.",
-        image: "https://images.unsplash.com/photo-1551655510-555dc3be8633?w=1200&q=80",
+        image: "/images/projects/bluetooth-remote.png",
         repoLink: "https://github.com/fxyizvc/bluetooth-remote-app",
         year: "2023"
     },

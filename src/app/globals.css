@@ -81,70 +81,71 @@
 }
 
 :root {
-  /* Luminous Noir Theme */
-  --background: 260 30% 5%;
-  /* Deep Obsidian */
-  --foreground: 260 10% 98%;
+  /* Zen Forest Theme */
+  --background: 150 20% 5%;
+  /* Deep Jungle (Dark Green-Black) */
+  --foreground: 140 10% 95%;
+  /* Soft Mist White */
 
-  --card: 260 30% 5%;
-  --card-foreground: 260 10% 98%;
+  --card: 150 20% 6%;
+  --card-foreground: 140 10% 95%;
 
-  --popover: 260 30% 5%;
-  --popover-foreground: 260 10% 98%;
+  --popover: 150 20% 6%;
+  --popover-foreground: 140 10% 95%;
 
-  --primary: 270 100% 60%;
-  /* Electric Violet */
-  --primary-foreground: 0 0% 100%;
+  --primary: 140 40% 65%;
+  /* Sage / Fern Green */
+  --primary-foreground: 150 30% 10%;
 
-  --secondary: 280 50% 10%;
-  /* Dark Indigo */
-  --secondary-foreground: 260 10% 98%;
+  --secondary: 150 20% 15%;
+  /* Deep Moss */
+  --secondary-foreground: 140 10% 95%;
 
-  --muted: 260 20% 15%;
-  --muted-foreground: 260 20% 65%;
+  --muted: 150 20% 15%;
+  --muted-foreground: 140 20% 70%;
 
-  --accent: 320 100% 60%;
-  /* Hot Pink / Fuchsia */
-  --accent-foreground: 0 0% 100%;
+  --accent: 35 70% 60%;
+  /* Warm Amber / Earth */
+  --accent-foreground: 150 30% 10%;
 
   --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 260 10% 98%;
+  --destructive-foreground: 140 10% 95%;
 
-  --border: 260 30% 15%;
-  --input: 260 30% 15%;
-  --ring: 270 100% 60%;
+  --border: 150 20% 15%;
+  --input: 150 20% 15%;
+  --ring: 140 40% 65%;
 
   --radius: 0.75rem;
 }
 
 .dark {
-  --background: 260 30% 5%;
-  --foreground: 260 10% 98%;
+  --background: 150 20% 5%;
+  --foreground: 140 10% 95%;
 
-  --card: 260 30% 5%;
-  --card-foreground: 260 10% 98%;
+  --card: 150 20% 6%;
+  --card-foreground: 140 10% 95%;
 
-  --popover: 260 30% 5%;
-  --popover-foreground: 260 10% 98%;
+  --popover: 150 20% 6%;
+  --popover-foreground: 140 10% 95%;
 
-  --primary: 270 100% 60%;
-  --primary-foreground: 0 0% 100%;
+  --primary: 140 40% 65%;
+  --primary-foreground: 150 30% 10%;
 
-  --secondary: 280 50% 10%;
-  --secondary-foreground: 260 10% 98%;
+  --secondary: 150 20% 15%;
+  --secondary-foreground: 140 10% 95%;
 
-  --muted: 260 20% 15%;
-  --muted-foreground: 260 20% 65%;
+  --muted: 150 20% 15%;
+  --muted-foreground: 140 20% 70%;
 
-  --accent: 320 100% 60%;
-  --accent-foreground: 0 0% 100%;
+  --accent: 35 70% 60%;
+  --accent-foreground: 150 30% 10%;
 
   --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 260 10% 98%;
+  --destructive-foreground: 140 10% 95%;
 
-  --border: 260 30% 15%;
-  --input: 260 30% 15%;
-  --ring: 270 100% 60%;
+  --border: 150 20% 15%;
+  --input: 150 20% 15%;
+  --ring: 140 40% 65%;
 }
 
 @layer base {
@@ -219,9 +220,13 @@
 
 .bg-aurora {
   background-image:
-    radial-gradient(at 100% 0%, hsla(270, 100%, 60%, 0.25) 0px, transparent 50%),
-    radial-gradient(at 0% 0%, hsla(320, 100%, 60%, 0.2) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, hsla(280, 100%, 60%, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, hsla(260, 100%, 60%, 0.1) 0px, transparent 50%);
+    radial-gradient(at 100% 0%, hsla(140, 40%, 65%, 0.15) 0px, transparent 50%),
+    /* Sage */
+    radial-gradient(at 0% 0%, hsla(150, 30%, 40%, 0.15) 0px, transparent 50%),
+    /* Forest */
+    radial-gradient(at 0% 100%, hsla(35, 70%, 60%, 0.1) 0px, transparent 50%),
+    /* Warm Amber */
+    radial-gradient(at 100% 100%, hsla(160, 50%, 20%, 0.2) 0px, transparent 50%);
+  /* Deep Teal */
   background-size: 100% 100%;
 }
