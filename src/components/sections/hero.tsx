@@ -24,48 +24,70 @@ export function Hero() {
             </div>
 
             <div className="container relative z-10 px-6">
-                <motion.div
-                    style={{ y, opacity }}
-                    className="max-w-5xl"
-                >
+                <div className="grid md:grid-cols-2 gap-12 items-center">
                     <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                        style={{ y, opacity }}
+                        className="max-w-3xl"
                     >
-                        <h2 className="text-xl md:text-2xl font-medium text-primary mb-4 tracking-wide font-sans">
-                            Hello, I'm
-                        </h2>
-                        <h1 className="text-[12vw] md:text-[9rem] font-bold font-heading tracking-tighter leading-[0.8] mb-6 text-foreground/90">
-                            Fayiz<span className="text-primary">.</span>
-                        </h1>
+                        <motion.div
+                            initial={{ opacity: 0, x: -50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                        >
+                            <h2 className="text-xl md:text-2xl font-medium text-primary mb-4 tracking-wide font-sans">
+                                Hello, I'm
+                            </h2>
+                            <h1 className="text-[12vw] md:text-[8rem] font-bold font-heading tracking-tighter leading-[0.8] mb-6 text-foreground/90">
+                                Fayiz<span className="text-primary">.</span>
+                            </h1>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                            className="pl-2 md:pl-4 border-l-2 border-primary/30"
+                        >
+                            <h2 className="text-3xl md:text-5xl font-bold text-muted-foreground tracking-tight leading-tight mb-8 max-w-xl">
+                                Crafting <span className="text-foreground">digital experiences</span> that bridge imagination and reality.
+                            </h2>
+
+                            <p className="text-lg md:text-xl text-muted-foreground/80 max-w-lg leading-relaxed mb-10 font-sans">
+                                I'm a developer obsessed with the intersection of **AI**, **AR**, and **Human-Computer Interaction**.
+                                Building the future, one pixel at a time.
+                            </p>
+
+                            <div className="flex flex-wrap gap-6">
+                                <Button size="lg" className="rounded-full text-lg px-8 py-6 h-auto" asChild>
+                                    <a href="#projects">View Selected Works <ArrowRight className="ml-2 h-5 w-5" /></a>
+                                </Button>
+                                <Button variant="ghost" size="lg" className="rounded-full text-lg px-8 py-6 h-auto hover:bg-white/5" asChild>
+                                    <a href="#contact">Get in Touch</a>
+                                </Button>
+                            </div>
+                        </motion.div>
                     </motion.div>
 
+                    {/* Right Column - Profile Picture */}
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                        className="pl-2 md:pl-4 border-l-2 border-primary/30"
+                        initial={{ opacity: 0, scale: 0.9, rotate: -5 }}
+                        animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                        transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                        className="relative hidden md:block"
                     >
-                        <h2 className="text-3xl md:text-5xl font-bold text-muted-foreground tracking-tight leading-tight mb-8 max-w-2xl">
-                            Crafting <span className="text-foreground">digital experiences</span> that bridge imagination and reality.
-                        </h2>
-
-                        <p className="text-lg md:text-xl text-muted-foreground/80 max-w-xl leading-relaxed mb-10 font-sans">
-                            I'm a developer obsessed with the intersection of **AI**, **AR**, and **Human-Computer Interaction**.
-                            Building the future, one pixel at a time.
-                        </p>
-
-                        <div className="flex flex-wrap gap-6">
-                            <Button size="lg" className="rounded-full text-lg px-8 py-6 h-auto" asChild>
-                                <a href="#projects">View Selected Works <ArrowRight className="ml-2 h-5 w-5" /></a>
-                            </Button>
-                            <Button variant="ghost" size="lg" className="rounded-full text-lg px-8 py-6 h-auto hover:bg-white/5" asChild>
-                                <a href="#contact">Get in Touch</a>
-                            </Button>
+                        <div className="relative aspect-square max-w-md mx-auto">
+                            <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-purple-500/20 rounded-full blur-3xl animate-pulse" />
+                            <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500">
+                                <div className="absolute inset-0 bg-primary/10 mix-blend-overlay z-10" />
+                                <img
+                                    src="/profile.jpg"
+                                    alt="Muhammed Fayiz V C"
+                                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                                />
+                            </div>
                         </div>
                     </motion.div>
-                </motion.div>
+                </div>
             </div>
 
             {/* Scroll Indicator - Asymetric */}
