@@ -46,10 +46,13 @@ export function CaseStudies() {
                     viewport={{ once: true }}
                     className="mb-20 space-y-4"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold font-heading">
-                        Selected Works<span className="text-primary">.</span>
-                    </h2>
-                    <p className="text-muted-foreground max-w-xl text-lg">
+                    <div className="container max-w-7xl mx-auto mb-16 md:mb-24 text-center">
+                        <h2 className="text-sm font-mono text-primary tracking-widest uppercase mb-4">Selected Works</h2>
+                        <h3 className="text-4xl md:text-6xl font-bold font-heading">
+                            Recent <span className="text-gradient">Projects</span>
+                        </h3>
+                    </div>
+                    <p className="text-muted-foreground max-w-xl text-lg mx-auto text-center">
                         A curation of experiments and functional applications.
                     </p>
                 </motion.div>

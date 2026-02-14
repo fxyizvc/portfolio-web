@@ -56,9 +56,9 @@ export function Contact() {
             {/* Background elements */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] -z-10" />
 
-            <div className="container max-w-5xl">
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
-                    <div>
+            <div className="container max-w-7xl">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+                    <div className="text-center lg:text-left flex flex-col items-center lg:items-start">
                         <h2 className="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
                             Let's Build Something <br />
                             <span className="text-gradient">Extraordinary.</span>
@@ -67,14 +67,14 @@ export function Contact() {
                             Have an idea that needs to come to life? I'm currently available for freelance projects and open to new opportunities.
                         </p>
 
-                        <div className="flex flex-col gap-6">
-                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=faisvc916@gmail.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+                        <div className="flex flex-col gap-6 w-full max-w-md">
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=faisvc916@gmail.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group p-4 rounded-2xl hover:bg-white/5 transition-colors">
                                 <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
                                     <Mail className="h-6 w-6" />
                                 </div>
-                                <div>
+                                <div className="text-left">
                                     <p className="text-sm text-muted-foreground font-medium">Email Me</p>
-                                    <p className="text-lg font-semibold">faisvc916@gmail.com</p>
+                                    <p className="text-lg font-semibold text-foreground">faisvc916@gmail.com</p>
                                 </div>
                             </a>
                         </div>

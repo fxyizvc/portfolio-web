@@ -14,10 +14,11 @@ export function About() {
     return (
         <section className="py-24 bg-background relative" id="about">
             <div className="container">
-                <div className="mb-16 text-center flex flex-col items-center">
-                    <h2 className="text-3xl font-bold tracking-tight font-heading sm:text-4xl text-gradient">
-                        About Me
-                    </h2>
+                <div className="mb-16 text-center">
+                    <h2 className="text-sm font-mono text-primary tracking-widest uppercase mb-4">About Me</h2>
+                    <h3 className="text-4xl md:text-6xl font-bold font-heading">
+                        Designing the <span className="text-gradient">Future</span>
+                    </h3>
                 </div>
 
                 <div className="bento-grid gap-8">

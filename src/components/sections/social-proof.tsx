@@ -30,11 +30,12 @@ const testimonials = [
 export function SocialProof() {
     return (
         <section className="py-24 bg-secondary/5">
-            <div className="container">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl font-bold tracking-tight font-heading sm:text-4xl text-gradient mb-4">
-                        Collaborators
-                    </h2>
+            <div className="container max-w-7xl">
+                <div className="mb-16 text-center">
+                    <h2 className="text-sm font-mono text-primary tracking-widest uppercase mb-4">Collaborators</h2>
+                    <h3 className="text-3xl md:text-5xl font-bold font-heading">
+                        What Teammates <span className="text-gradient">Say</span>
+                    </h3>
                     <p className="text-muted-foreground max-w-xl mx-auto">
                         Feedback from the talented individuals I've had the privilege to build with.
                     </p>
