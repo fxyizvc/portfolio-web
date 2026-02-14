@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useScroll, useMotionValueEvent, motion, AnimatePresence } from "framer-motion";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Navbar() {
@@ -48,6 +48,11 @@ export function Navbar() {
                         <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" asChild>
                             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=faisvc916@gmail.com" target="_blank" rel="noopener noreferrer">
                                 <Mail className="h-4 w-4" />
+                            </a>
+                        </Button>
+                        <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" asChild>
+                            <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">
+                                <MessageCircle className="h-4 w-4" />
                             </a>
                         </Button>
                     </div>

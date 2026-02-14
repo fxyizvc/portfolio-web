@@ -6,7 +6,7 @@ import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { Mail, Loader2 } from "lucide-react";
+import { Mail, Loader2, MessageCircle } from "lucide-react";
 import { useState } from "react";
 
 const formSchema = z.object({
@@ -75,6 +75,16 @@ export function Contact() {
                                 <div className="text-left">
                                     <p className="text-sm text-muted-foreground font-medium">Email Me</p>
                                     <p className="text-lg font-semibold text-foreground">faisvc916@gmail.com</p>
+                                </div>
+                            </a>
+
+                            <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group p-4 rounded-2xl hover:bg-white/5 transition-colors">
+                                <div className="h-12 w-12 rounded-full bg-green-500/10 flex items-center justify-center text-green-500 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
+                                    <MessageCircle className="h-6 w-6" />
+                                </div>
+                                <div className="text-left">
+                                    <p className="text-sm text-muted-foreground font-medium">WhatsApp</p>
+                                    <p className="text-lg font-semibold text-foreground">Chat on WhatsApp</p>
                                 </div>
                             </a>
                         </div>
