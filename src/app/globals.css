@@ -81,39 +81,39 @@
 }
 
 :root {
-  /* Zen Forest Theme */
-  --background: 150 20% 5%;
-  /* Deep Jungle (Dark Green-Black) */
-  --foreground: 140 10% 95%;
-  /* Soft Mist White */
+  /* Zen Cloud Theme (Light Mode) */
+  --background: 140 20% 98%;
+  /* Pale Mist with hint of green */
+  --foreground: 150 20% 5%;
+  /* Deep Jungle Green (Text) */
 
-  --card: 150 20% 6%;
-  --card-foreground: 140 10% 95%;
+  --card: 0 0% 100%;
+  --card-foreground: 150 20% 5%;
 
-  --popover: 150 20% 6%;
-  --popover-foreground: 140 10% 95%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 150 20% 5%;
 
-  --primary: 140 40% 65%;
-  /* Sage / Fern Green */
-  --primary-foreground: 150 30% 10%;
+  --primary: 140 40% 40%;
+  /* Darker Fern for contrast */
+  --primary-foreground: 140 10% 98%;
 
-  --secondary: 150 20% 15%;
-  /* Deep Moss */
-  --secondary-foreground: 140 10% 95%;
+  --secondary: 150 20% 90%;
+  /* Light Moss */
+  --secondary-foreground: 150 20% 5%;
 
-  --muted: 150 20% 15%;
-  --muted-foreground: 140 20% 70%;
+  --muted: 150 20% 90%;
+  --muted-foreground: 150 20% 40%;
 
-  --accent: 35 70% 60%;
-  /* Warm Amber / Earth */
-  --accent-foreground: 150 30% 10%;
+  --accent: 35 80% 50%;
+  /* Rich Amber */
+  --accent-foreground: 140 10% 98%;
 
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 140 10% 95%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
 
-  --border: 150 20% 15%;
-  --input: 150 20% 15%;
-  --ring: 140 40% 65%;
+  --border: 150 20% 85%;
+  --input: 150 20% 85%;
+  --ring: 140 40% 40%;
 
   --radius: 0.75rem;
 }
