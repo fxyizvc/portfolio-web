@@ -51,7 +51,7 @@ export function Navbar() {
                             </a>
                         </Button>
                         <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" asChild>
-                            <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">
+                            <a href="https://wa.me/918304853179" target="_blank" rel="noopener noreferrer">
                                 <MessageCircle className="h-4 w-4" />
                             </a>
                         </Button>
