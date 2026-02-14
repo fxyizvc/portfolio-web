@@ -26,7 +26,7 @@ export function About() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="md:col-span-2 row-span-2 glass-panel p-10 rounded-3xl flex flex-col md:flex-row gap-8 items-center"
+                        className="md:col-span-2 row-span-2 glass-panel p-6 md:p-10 rounded-3xl flex flex-col md:flex-row gap-8 items-center"
                     >
                         <div className="relative w-40 h-40 md:w-56 md:h-56 flex-shrink-0 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl shadow-primary/10">
                             <img

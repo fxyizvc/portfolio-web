@@ -34,7 +34,7 @@ export function Navbar() {
                     )}
                 </AnimatePresence>
                 <nav className="flex items-center gap-2 ml-auto">
-                    <div className="hidden md:flex items-center gap-1 mr-2 border-r pr-2 h-6">
+                    <div className="flex items-center gap-1 mr-2 border-r pr-2 h-6">
                         <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" asChild>
                             <a href="https://www.github.com/fxyizvc" target="_blank" rel="noopener noreferrer">
                                 <Github className="h-4 w-4" />

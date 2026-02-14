@@ -73,10 +73,10 @@ export function Hero() {
                         initial={{ opacity: 0, scale: 0.9, rotate: -5 }}
                         animate={{ opacity: 1, scale: 1, rotate: 0 }}
                         transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                        className="relative hidden md:block"
+                        className="relative block mt-12 md:mt-0"
                     >
-                        <div className="relative aspect-square max-w-md mx-auto">
-                            <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-purple-500/20 rounded-full blur-3xl animate-pulse" />
+                        <div className="relative aspect-square max-w-[280px] md:max-w-md mx-auto">
+                            <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-full blur-3xl animate-pulse" />
                             <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <div className="absolute inset-0 bg-primary/10 mix-blend-overlay z-10" />
                                 <img

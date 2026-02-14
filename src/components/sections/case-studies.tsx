@@ -56,44 +56,77 @@ export function CaseStudies() {
 
                 <div className="flex flex-col">
                     {projects.map((project) => (
-                        <motion.a
-                            href={project.repoLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            key={project.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: project.id * 0.1 }}
-                            onMouseEnter={() => setActiveProject(project.id)}
-                            onMouseLeave={() => setActiveProject(null)}
-                            className="group relative border-t border-white/10 py-12 md:py-16 flex flex-col md:flex-row md:items-center justify-between gap-6 transition-all hover:px-8"
-                        >
-                            {/* Hover Background for List Item */}
-                            <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
-
-                            <div className="space-y-2 relative z-10">
-                                <div className="flex items-center gap-4 text-sm text-primary font-mono tracking-wider uppercase">
+                        <div key={project.id}>
+                            {/* Mobile View: Card Style */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                className="md:hidden mb-8 group"
+                            >
+                                <div className="relative aspect-video rounded-2xl overflow-hidden mb-4 border border-white/10">
+                                    <img
+                                        src={project.image}
+                                        alt={project.title}
+                                        className="object-cover w-full h-full"
+                                    />
+                                </div>
+                                <div className="flex items-center gap-3 text-xs text-primary font-mono tracking-wider uppercase mb-2">
                                     <span>{project.category}</span>
                                     <span className="w-1 h-1 rounded-full bg-primary" />
                                     <span>{project.year}</span>
                                 </div>
-                                <h3 className="text-3xl md:text-6xl font-black font-heading tracking-tight text-foreground/80 group-hover:text-white transition-colors">
-                                    {project.title}
-                                </h3>
-                            </div>
+                                <h3 className="text-2xl font-bold font-heading mb-2">{project.title}</h3>
+                                <p className="text-muted-foreground text-sm mb-4">{project.description}</p>
+                                <a
+                                    href={project.repoLink}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center text-sm font-medium text-primary hover:underline hover:underline-offset-4"
+                                >
+                                    View Project <ArrowUpRight className="ml-1 h-4 w-4" />
+                                </a>
+                            </motion.div>
 
-                            <div className="flex items-center gap-8 relative z-10 opacity-60 group-hover:opacity-100 transition-opacity">
-                                <p className="hidden md:block text-muted-foreground max-w-sm text-right font-sans">
-                                    {project.description}
-                                </p>
-                                <div className="h-12 w-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all duration-300 transform group-hover:rotate-45">
-                                    <ArrowUpRight className="h-6 w-6 text-foreground group-hover:text-white" />
+                            {/* Desktop View: Interactive List */}
+                            <motion.a
+                                href={project.repoLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: project.id * 0.1 }}
+                                onMouseEnter={() => setActiveProject(project.id)}
+                                onMouseLeave={() => setActiveProject(null)}
+                                className="hidden md:flex group relative border-t border-white/10 py-12 md:py-16 flex-col md:flex-row md:items-center justify-between gap-6 transition-all hover:px-8"
+                            >
+                                {/* Hover Background for List Item */}
+                                <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+
+                                <div className="space-y-2 relative z-10">
+                                    <div className="flex items-center gap-4 text-sm text-primary font-mono tracking-wider uppercase">
+                                        <span>{project.category}</span>
+                                        <span className="w-1 h-1 rounded-full bg-primary" />
+                                        <span>{project.year}</span>
+                                    </div>
+                                    <h3 className="text-3xl md:text-6xl font-black font-heading tracking-tight text-foreground/80 group-hover:text-white transition-colors">
+                                        {project.title}
+                                    </h3>
                                 </div>
-                            </div>
-                        </motion.a>
+
+                                <div className="flex items-center gap-8 relative z-10 opacity-60 group-hover:opacity-100 transition-opacity">
+                                    <p className="hidden md:block text-muted-foreground max-w-sm text-right font-sans">
+                                        {project.description}
+                                    </p>
+                                    <div className="h-12 w-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all duration-300 transform group-hover:rotate-45">
+                                        <ArrowUpRight className="h-6 w-6 text-foreground group-hover:text-white" />
+                                    </div>
+                                </div>
+                            </motion.a>
+                        </div>
                     ))}
-                    <div className="border-t border-white/10" />
+                    <div className="hidden md:block border-t border-white/10" />
                 </div>
             </div>
 
