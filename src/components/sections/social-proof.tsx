@@ -41,12 +41,12 @@ export function SocialProof() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="flex flex-wrap justify-center gap-8">
                     {testimonials.map((testimonial) => (
-                        <Card key={testimonial.id} className="bg-card/50 backdrop-blur-sm border-none shadow-md">
-                            <CardContent className="pt-6">
+                        <Card key={testimonial.id} className="bg-card/50 backdrop-blur-sm border-none shadow-md w-full md:w-[calc(50%-2rem)] lg:w-[calc(33.33%-2rem)] hover:bg-card/80 transition-colors duration-300">
+                            <CardContent className="pt-6 h-full flex flex-col">
                                 <Quote className="h-8 w-8 text-primary/40 mb-4" />
-                                <p className="text-lg mb-6 italic text-muted-foreground">"{testimonial.content}"</p>
+                                <p className="text-lg mb-6 italic text-muted-foreground flex-grow">"{testimonial.content}"</p>
                                 <div>
                                     <p className="font-semibold">{testimonial.name}</p>
                                     <p className="text-sm text-muted-foreground">{testimonial.role}</p>
@@ -54,14 +54,6 @@ export function SocialProof() {
                             </CardContent>
                         </Card>
                     ))}
-                </div>
-
-                <div className="mt-20 pt-10 border-t flex flex-wrap justify-center items-center gap-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-                    {/* Placeholder for Client Logos. using text for now */}
-                    <span className="text-xl font-bold">ACME Corp</span>
-                    <span className="text-xl font-bold">GlobalTech</span>
-                    <span className="text-xl font-bold">Nebula Systems</span>
-                    <span className="text-xl font-bold">Vertex AI</span>
                 </div>
             </div>
         </section>
