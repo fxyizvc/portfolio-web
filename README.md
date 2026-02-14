@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Website | Muhammed Fayiz V C
 
-## Getting Started
+![Portfolio Preview](/public/open-graph.jpg)
 
-First, run the development server:
+A modern, high-performance portfolio website built with **Next.js 16**, **Tailwind CSS v4**, and **Framer Motion**. Designed to be immersive, responsive, and accessible, featuring a dual-theme system ("Zen Forest" & "Zen Cloud") and cinematic interactions.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Features
+
+-   **Dual-Theme Engine**:
+    -   🌑 **Zen Forest (Dark)**: Deep Jungle Green & Sage for a calm, immersive night mode.
+    -   ☀️ **Zen Cloud (Light)**: Pale Mist & Dark Fern for optimal daylight readability.
+-   **Cinematic Interactions**:
+    -   **Spotlight Cards** (Mobile) & **Hover Reveals** (Desktop) for case studies.
+    -   **Magnetic Cursor** that adapts to interactive elements.
+    -   **Parallax Scroll** effects in the Hero section.
+-   **Modern Layouts**:
+    -   **Bento Grid**: Glassmorphic "About Me" section showcasing skills and experience.
+    -   **Responsive Design**: Mobile-first optimization ensuring perfect scaling from phones to 4K monitors.
+-   **Backend Integration**:
+    -   **Contact Form**: Powered by [Formspree](https://formspree.io) for real-time email delivery with Zod validation.
+
+## 🛠️ Tech Stack
+
+-   **Framework**: [Next.js 16 (App Router)](https://nextjs.org/)
+-   **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) + CSS Variables
+-   **Animation**: [Framer Motion](https://www.framer.com/motion/)
+-   **Language**: [TypeScript](https://www.typescriptlang.org/)
+-   **Forms**: React Hook Form + Zod + Formspree
+-   **Icons**: Lucide React
+-   **Fonts**: Syne (Headings) + Space Grotesk (Body) via `next/font`
+
+## 🚀 Getting Started
+
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/fxyizvc/portfolio-web.git
+    cd portfolio-web
+    ```
+
+2.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
+
+3.  **Run the development server**:
+    ```bash
+    npm run dev
+    ```
+
+4.  **Open locally**:
+    Visit [http://localhost:3000](http://localhost:3000) to see the site in action.
+
+## 📂 Project Structure
+
+```
+src/
+├── app/              # Next.js App Router pages
+│   ├── globals.css   # Global styles & Theme variables
+│   └── layout.tsx    # Root layout & providers
+├── components/
+│   ├── layout/       # Navbar, Footer
+│   ├── sections/     # Hero, About, CaseStudies, Contact
+│   └── ui/           # Reusable UI components (Buttons, Cursor, etc.)
+└── lib/              # Utilities (clsx, twMerge)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎨 Customizing the Theme
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The theme is controlled via CSS variables in `src/app/globals.css`. You can adjust the "Zen Forest" (Root/Dark) and "Zen Cloud" (Light) palettes by modifying the HSL values in the `:root` and `.dark` blocks.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📝 License
 
-## Learn More
+This project is open source and available under the [MIT License](LICENSE).
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Designed & Built by **Muhammed Fayiz V C**.
