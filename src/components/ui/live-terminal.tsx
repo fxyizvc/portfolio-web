@@ -10,7 +10,7 @@ export function LiveTerminal() {
         { text: "Type 'help' to see active commands, 'top' for metrics, or 'arch' for infra layout.", type: "system" },
         { text: "cluster status: 99.99% uptime | 0 incidents active | us-east-1", type: "output" }
     ]);
-    const bottomRef = useRef<HTMLDivElement>(null);
+    const bodyRef = useRef<HTMLDivElement>(null);
 
     const executeCommand = (cmd: string) => {
         const clean = cmd.trim().toLowerCase();
@@ -114,7 +114,9 @@ export function LiveTerminal() {
     };
 
     useEffect(() => {
-        bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+        if (bodyRef.current) {
+            bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
+        }
     }, [history]);
 
     return (
@@ -138,7 +140,7 @@ export function LiveTerminal() {
             </div>
 
             {/* Terminal Body */}
-            <div className="p-4 md:p-6 text-xs md:text-sm h-64 md:h-72 overflow-y-auto space-y-1.5 custom-scrollbar bg-slate-950 text-slate-200">
+            <div ref={bodyRef} className="p-4 md:p-6 text-xs md:text-sm h-64 md:h-72 overflow-y-auto space-y-1.5 custom-scrollbar bg-slate-950 text-slate-200">
                 {history.map((line, i) => (
                     <div
                         key={i}
@@ -155,7 +157,6 @@ export function LiveTerminal() {
                         {line.text}
                     </div>
                 ))}
-                <div ref={bottomRef} />
             </div>
 
             {/* Terminal Prompt Input */}
