@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Terminal as TerminalIcon, Maximize2, Minimize2, X, RefreshCw } from "lucide-react";
+import { Terminal as TerminalIcon } from "lucide-react";
 
 export function LiveTerminal() {
     const [input, setInput] = useState("");
@@ -118,27 +118,27 @@ export function LiveTerminal() {
     }, [history]);
 
     return (
-        <div className="w-full rounded-2xl border border-emerald-500/30 bg-black/90 font-mono shadow-2xl overflow-hidden backdrop-blur-2xl">
+        <div className="w-full rounded-2xl border border-border bg-slate-950 font-mono shadow-2xl overflow-hidden text-slate-100">
             {/* Terminal Title Bar */}
-            <div className="flex items-center justify-between px-4 py-3 bg-zinc-950/80 border-b border-zinc-800">
+            <div className="flex items-center justify-between px-4 py-3 bg-slate-900 border-b border-slate-800">
                 <div className="flex items-center gap-2">
-                    <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
-                    <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
-                    <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
-                    <span className="ml-2 text-xs text-zinc-400 font-mono flex items-center gap-1.5">
+                    <span className="w-3 h-3 rounded-full bg-rose-500 inline-block" />
+                    <span className="w-3 h-3 rounded-full bg-amber-500 inline-block" />
+                    <span className="w-3 h-3 rounded-full bg-emerald-500 inline-block" />
+                    <span className="ml-2 text-xs text-slate-300 font-mono flex items-center gap-1.5">
                         <TerminalIcon className="w-3.5 h-3.5 text-emerald-400" />
                         fayiz@aws-prod-telemetry:~
                     </span>
                 </div>
-                <div className="flex items-center gap-3 text-xs text-zinc-400">
-                    <span className="px-2 py-0.5 rounded-full bg-emerald-950/60 text-emerald-400 border border-emerald-800/40 text-[10px]">
+                <div className="flex items-center gap-3 text-xs text-slate-400">
+                    <span className="px-2 py-0.5 rounded-full bg-emerald-950/80 text-emerald-300 border border-emerald-700/60 text-[10px] font-semibold">
                         LIVE CONNECTED
                     </span>
                 </div>
             </div>
 
             {/* Terminal Body */}
-            <div className="p-4 md:p-6 text-xs md:text-sm h-64 md:h-72 overflow-y-auto space-y-1.5 custom-scrollbar text-zinc-300">
+            <div className="p-4 md:p-6 text-xs md:text-sm h-64 md:h-72 overflow-y-auto space-y-1.5 custom-scrollbar bg-slate-950 text-slate-200">
                 {history.map((line, i) => (
                     <div
                         key={i}
@@ -149,7 +149,7 @@ export function LiveTerminal() {
                                 ? "text-amber-300"
                                 : line.type === "error"
                                 ? "text-rose-400"
-                                : "text-zinc-300"
+                                : "text-slate-300"
                         }`}
                     >
                         {line.text}
@@ -159,18 +159,18 @@ export function LiveTerminal() {
             </div>
 
             {/* Terminal Prompt Input */}
-            <form onSubmit={handleSubmit} className="flex items-center px-4 py-3 bg-zinc-950 border-t border-zinc-800">
-                <span className="text-emerald-400 font-mono text-sm mr-2 select-none">$</span>
+            <form onSubmit={handleSubmit} className="flex items-center px-4 py-3 bg-slate-900 border-t border-slate-800">
+                <span className="text-emerald-400 font-mono text-sm mr-2 select-none font-bold">$</span>
                 <input
                     type="text"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="type 'help', 'top', 'whoami', or 'arch'..."
-                    className="flex-1 bg-transparent text-emerald-300 font-mono text-xs md:text-sm outline-none placeholder:text-zinc-600"
+                    className="flex-1 bg-transparent text-emerald-300 font-mono text-xs md:text-sm outline-none placeholder:text-slate-500"
                 />
                 <button
                     type="submit"
-                    className="text-[11px] font-mono px-2.5 py-1 rounded bg-emerald-950/80 border border-emerald-800/50 text-emerald-400 hover:bg-emerald-900/50 transition-colors"
+                    className="text-[11px] font-mono px-2.5 py-1 rounded bg-emerald-800/60 border border-emerald-600/50 text-emerald-200 hover:bg-emerald-700/60 transition-colors font-semibold"
                 >
                     RUN
                 </button>

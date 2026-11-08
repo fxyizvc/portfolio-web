@@ -33,8 +33,8 @@ export function LiveCloudTelemetry() {
             status: "NOMINAL",
             latency: pings.almalinux,
             icon: Server,
-            color: "text-emerald-400",
-            bg: "bg-emerald-500/10 border-emerald-500/20",
+            color: "text-emerald-600 dark:text-emerald-400",
+            bg: "bg-emerald-500/5 dark:bg-emerald-500/10 border-emerald-500/20",
         },
         {
             name: "CloudWatch Telemetry Daemon",
@@ -42,8 +42,8 @@ export function LiveCloudTelemetry() {
             status: "STREAMING",
             latency: pings.cloudwatch,
             icon: Activity,
-            color: "text-cyan-400",
-            bg: "bg-cyan-500/10 border-cyan-500/20",
+            color: "text-cyan-600 dark:text-cyan-400",
+            bg: "bg-cyan-500/5 dark:bg-cyan-500/10 border-cyan-500/20",
         },
         {
             name: "Grafana & Prometheus Hub",
@@ -51,8 +51,8 @@ export function LiveCloudTelemetry() {
             status: "OBSERVABLE",
             latency: pings.grafana,
             icon: Network,
-            color: "text-amber-400",
-            bg: "bg-amber-500/10 border-amber-500/20",
+            color: "text-amber-600 dark:text-amber-400",
+            bg: "bg-amber-500/5 dark:bg-amber-500/10 border-amber-500/20",
         },
         {
             name: "Containerized Workloads",
@@ -60,8 +60,8 @@ export function LiveCloudTelemetry() {
             status: "ACTIVE",
             latency: `Load: ${pings.loadAvg}`,
             icon: HardDrive,
-            color: "text-indigo-400",
-            bg: "bg-indigo-500/10 border-indigo-500/20",
+            color: "text-indigo-600 dark:text-indigo-400",
+            bg: "bg-indigo-500/5 dark:bg-indigo-500/10 border-indigo-500/20",
         },
     ];
 
@@ -70,14 +70,14 @@ export function LiveCloudTelemetry() {
             <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
                     <span className="relative flex h-2.5 w-2.5">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-600 dark:bg-emerald-500"></span>
                     </span>
                     <span className="text-xs font-mono uppercase tracking-wider text-muted-foreground font-semibold">
                         Real-time Mesh Telemetry
                     </span>
                 </div>
-                <div className="text-xs font-mono text-emerald-400 bg-emerald-950/60 px-2.5 py-1 rounded-full border border-emerald-800/40">
+                <div className="text-xs font-mono text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-950/60 px-2.5 py-1 rounded-full border border-emerald-500/30 dark:border-emerald-800/40 font-semibold">
                     SLA: {pings.uptime}
                 </div>
             </div>
@@ -91,7 +91,7 @@ export function LiveCloudTelemetry() {
                             className={`p-3.5 rounded-xl border ${node.bg} backdrop-blur-xl flex items-center justify-between transition-all duration-300 hover:scale-[1.01]`}
                         >
                             <div className="flex items-center gap-3">
-                                <div className={`p-2 rounded-lg bg-black/40 ${node.color}`}>
+                                <div className={`p-2 rounded-lg bg-card shadow-sm border border-border/50 ${node.color}`}>
                                     <Icon className="w-4 h-4" />
                                 </div>
                                 <div className="text-left">
@@ -100,7 +100,7 @@ export function LiveCloudTelemetry() {
                                 </div>
                             </div>
                             <div className="text-right pl-2">
-                                <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/40 ${node.color} border border-white/5`}>
+                                <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full bg-card shadow-xs ${node.color} border border-border/40 font-semibold`}>
                                     {node.status}
                                 </span>
                                 <p className="text-[10px] text-muted-foreground font-mono mt-1">{node.latency}</p>

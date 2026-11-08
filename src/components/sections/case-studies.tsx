@@ -1,25 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { 
-    Cloud, 
     Server, 
     Shield, 
-    Terminal, 
-    Layers, 
-    Activity, 
-    CheckCircle2, 
-    ExternalLink, 
-    Github, 
     History, 
-    Lock, 
     ArrowUpRight,
-    Cpu,
-    GitBranch
+    Github,
+    Activity,
+    CheckCircle2
 } from "lucide-react";
 
-// Production DevOps & Cloud Infrastructure Work
 const cloudSystems = [
     {
         id: "sys-1",
@@ -90,7 +82,6 @@ const cloudSystems = [
     }
 ];
 
-// The "Past Archive" (Your former life building AR, AI, and Mobile experiments)
 const legacyProjects = [
     {
         id: "leg-1",
@@ -123,7 +114,6 @@ const legacyProjects = [
 
 export function CaseStudies() {
     const [selectedTab, setSelectedTab] = useState<"current" | "past">("current");
-    const [activeSystem, setActiveSystem] = useState<string>("sys-1");
 
     return (
         <section className="py-28 relative overflow-hidden" id="infrastructure">
@@ -134,12 +124,12 @@ export function CaseStudies() {
             <div className="container max-w-7xl mx-auto px-6 relative z-10">
                 {/* Header Section */}
                 <div className="text-center max-w-3xl mx-auto mb-16">
-                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-950/40 text-emerald-400 text-xs font-mono tracking-widest uppercase mb-4">
+                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 text-xs font-mono tracking-widest uppercase mb-4 font-bold">
                         <Activity className="w-3.5 h-3.5" />
                         <span>Systems & Infrastructure</span>
                     </div>
 
-                    <h3 className="text-4xl md:text-6xl font-bold font-heading tracking-tight">
+                    <h3 className="text-4xl md:text-6xl font-bold font-heading tracking-tight text-foreground">
                         Cloud Systems & <span className="text-gradient">Production Work</span>
                     </h3>
 
@@ -147,14 +137,14 @@ export function CaseStudies() {
                         High-availability architecture, Linux hardening, automated pipelines, and telemetry.
                     </p>
 
-                    {/* Mode Switcher: Current Production vs Past Archive Vault */}
-                    <div className="inline-flex p-1.5 rounded-2xl bg-zinc-900/80 border border-white/10 mt-8 backdrop-blur-xl">
+                    {/* Mode Switcher */}
+                    <div className="inline-flex p-1.5 rounded-2xl bg-card border border-border mt-8 shadow-sm">
                         <button
                             onClick={() => setSelectedTab("current")}
                             className={`px-5 py-2.5 rounded-xl text-xs font-mono transition-all duration-200 flex items-center gap-2 ${
                                 selectedTab === "current"
-                                    ? "bg-emerald-500 text-black font-bold shadow-lg shadow-emerald-500/20"
-                                    : "text-zinc-400 hover:text-white"
+                                    ? "bg-emerald-600 text-white font-bold shadow-md shadow-emerald-600/20"
+                                    : "text-muted-foreground hover:text-foreground"
                             }`}
                         >
                             <Server className="w-3.5 h-3.5" />
@@ -165,8 +155,8 @@ export function CaseStudies() {
                             id="past-vault"
                             className={`px-5 py-2.5 rounded-xl text-xs font-mono transition-all duration-200 flex items-center gap-2 ${
                                 selectedTab === "past"
-                                    ? "bg-amber-400 text-black font-bold shadow-lg shadow-amber-400/20"
-                                    : "text-zinc-400 hover:text-white"
+                                    ? "bg-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/20"
+                                    : "text-muted-foreground hover:text-foreground"
                             }`}
                         >
                             <History className="w-3.5 h-3.5" />
@@ -186,43 +176,43 @@ export function CaseStudies() {
                         {cloudSystems.map((sys) => (
                             <div
                                 key={sys.id}
-                                className="p-8 rounded-3xl border border-white/10 bg-card/40 backdrop-blur-2xl shadow-xl flex flex-col justify-between hover:border-emerald-500/40 transition-all duration-300 group"
+                                className="p-8 rounded-3xl border border-border bg-card/90 backdrop-blur-2xl shadow-lg flex flex-col justify-between hover:border-emerald-500/50 transition-all duration-300 group"
                             >
                                 <div className="space-y-6">
                                     {/* Top Bar */}
                                     <div className="flex items-center justify-between">
-                                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-emerald-950/70 border border-emerald-800/40 text-emerald-400">
+                                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-800 dark:text-emerald-300 font-semibold">
                                             {sys.category}
                                         </span>
-                                        <span className="text-xs font-mono text-zinc-400 flex items-center gap-1.5">
-                                            <Shield className="w-3.5 h-3.5 text-emerald-400" />
+                                        <span className="text-xs font-mono text-muted-foreground flex items-center gap-1.5 font-medium">
+                                            <Shield className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                                             {sys.status}
                                         </span>
                                     </div>
 
                                     <div>
-                                        <h4 className="text-2xl font-bold font-heading group-hover:text-emerald-400 transition-colors">
+                                        <h4 className="text-2xl font-bold font-heading group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors text-foreground">
                                             {sys.title}
                                         </h4>
-                                        <p className="text-xs text-emerald-400/90 font-mono mt-1 font-semibold">{sys.role}</p>
+                                        <p className="text-xs text-emerald-700 dark:text-emerald-400 font-mono mt-1 font-bold">{sys.role}</p>
                                         <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
                                             {sys.summary}
                                         </p>
                                     </div>
 
                                     {/* Architecture Flow Box */}
-                                    <div className="p-3.5 rounded-xl bg-black/60 border border-zinc-800 text-[11px] font-mono text-zinc-300 overflow-x-auto whitespace-nowrap">
+                                    <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-[11px] font-mono text-slate-200 overflow-x-auto whitespace-nowrap shadow-inner">
                                         <span className="text-emerald-400 font-bold mr-2">FLOW:</span>
                                         {sys.architecture}
                                     </div>
 
                                     {/* Key Engineering Highlights */}
                                     <div className="space-y-2">
-                                        <p className="text-xs font-mono text-zinc-400 uppercase tracking-wider font-semibold">Key Implementations:</p>
+                                        <p className="text-xs font-mono text-foreground uppercase tracking-wider font-bold">Key Implementations:</p>
                                         <ul className="space-y-1.5">
                                             {sys.highlights.map((h, i) => (
-                                                <li key={i} className="text-xs text-zinc-300 flex items-start gap-2">
-                                                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                                                <li key={i} className="text-xs text-foreground/80 flex items-start gap-2">
+                                                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                                                     <span>{h}</span>
                                                 </li>
                                             ))}
@@ -231,12 +221,12 @@ export function CaseStudies() {
                                 </div>
 
                                 {/* Tech Pills & Action */}
-                                <div className="pt-6 border-t border-white/10 mt-6 flex flex-col gap-4">
+                                <div className="pt-6 border-t border-border mt-6 flex flex-col gap-4">
                                     <div className="flex flex-wrap gap-1.5">
                                         {sys.tags.map((tag) => (
                                             <span
                                                 key={tag}
-                                                className="px-2.5 py-1 rounded-lg text-[11px] font-mono bg-white/5 border border-white/10 text-zinc-300"
+                                                className="px-2.5 py-1 rounded-lg text-[11px] font-mono bg-muted/70 border border-border text-foreground font-medium"
                                             >
                                                 {tag}
                                             </span>
@@ -247,7 +237,7 @@ export function CaseStudies() {
                                             href={sys.codeLink}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-400 hover:text-emerald-300 transition-colors"
+                                            className="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-700 dark:text-emerald-400 hover:text-emerald-600 transition-colors font-semibold"
                                         >
                                             <Github className="w-3.5 h-3.5" />
                                             <span>Inspect Repositories</span>
@@ -260,7 +250,7 @@ export function CaseStudies() {
                     </motion.div>
                 )}
 
-                {/* Tab 2: The Past Vault (AI & AR Heritage) */}
+                {/* Tab 2: The Past Vault */}
                 {selectedTab === "past" && (
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -269,21 +259,21 @@ export function CaseStudies() {
                         className="space-y-6"
                     >
                         {/* Notice Banner */}
-                        <div className="p-6 rounded-2xl border border-amber-500/30 bg-amber-950/20 backdrop-blur-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div className="p-6 rounded-2xl border border-amber-500/30 bg-amber-500/10 dark:bg-amber-950/20 backdrop-blur-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                             <div className="flex items-center gap-3">
-                                <div className="p-2.5 rounded-xl bg-amber-500/20 text-amber-400 shrink-0">
+                                <div className="p-2.5 rounded-xl bg-amber-500/20 text-amber-700 dark:text-amber-400 shrink-0">
                                     <History className="w-6 h-6" />
                                 </div>
                                 <div>
-                                    <h4 className="text-base font-bold text-amber-300 font-heading">
+                                    <h4 className="text-base font-bold text-amber-900 dark:text-amber-300 font-heading">
                                         The Origin Story: Developer & AR Creator Past
                                     </h4>
-                                    <p className="text-xs text-amber-200/80 mt-1 max-w-2xl leading-relaxed">
+                                    <p className="text-xs text-amber-950/80 dark:text-amber-200/80 mt-1 max-w-2xl leading-relaxed">
                                         Before focusing full-time on AWS infrastructure, Linux administration, and SRE operations, I spent years researching Augmented Reality, edge machine learning models, and low-level mobile hardware bridges. Here is the curated archive of those builds.
                                     </p>
                                 </div>
                             </div>
-                            <span className="px-3 py-1 rounded-full text-xs font-mono bg-amber-500/20 text-amber-300 border border-amber-500/30 shrink-0">
+                            <span className="px-3 py-1 rounded-full text-xs font-mono bg-amber-500/20 text-amber-800 dark:text-amber-300 border border-amber-500/30 shrink-0 font-bold">
                                 ARCHIVED ARTIFACTS
                             </span>
                         </div>
@@ -293,31 +283,31 @@ export function CaseStudies() {
                             {legacyProjects.map((leg) => (
                                 <div
                                     key={leg.id}
-                                    className="p-6 rounded-3xl border border-zinc-800 bg-zinc-950/60 backdrop-blur-xl flex flex-col justify-between hover:border-amber-500/40 transition-all duration-300"
+                                    className="p-6 rounded-3xl border border-border bg-card/90 backdrop-blur-xl flex flex-col justify-between hover:border-amber-500/50 transition-all duration-300 shadow-md"
                                 >
                                     <div className="space-y-4">
                                         <div className="flex items-center justify-between">
-                                            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-950/60 border border-amber-800/40 text-amber-300">
+                                            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-800 dark:text-amber-300 font-bold">
                                                 {leg.era}
                                             </span>
-                                            <span className="text-xs font-mono text-zinc-500">{leg.type}</span>
+                                            <span className="text-xs font-mono text-muted-foreground">{leg.type}</span>
                                         </div>
 
-                                        <h4 className="text-xl font-bold font-heading text-zinc-200">
+                                        <h4 className="text-xl font-bold font-heading text-foreground">
                                             {leg.title}
                                         </h4>
 
-                                        <p className="text-xs text-zinc-400 leading-relaxed">
+                                        <p className="text-xs text-muted-foreground leading-relaxed">
                                             {leg.description}
                                         </p>
                                     </div>
 
-                                    <div className="pt-6 border-t border-zinc-900 mt-6 space-y-4">
+                                    <div className="pt-6 border-t border-border mt-6 space-y-4">
                                         <div className="flex flex-wrap gap-1.5">
                                             {leg.tech.map((t) => (
                                                 <span
                                                     key={t}
-                                                    className="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-900 text-zinc-400 border border-zinc-800"
+                                                    className="px-2 py-0.5 rounded text-[10px] font-mono bg-muted text-foreground border border-border"
                                                 >
                                                     {t}
                                                 </span>
@@ -328,7 +318,7 @@ export function CaseStudies() {
                                             href={leg.link}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-1.5 text-xs font-mono text-amber-400 hover:text-amber-300 transition-colors"
+                                            className="inline-flex items-center gap-1.5 text-xs font-mono text-amber-700 dark:text-amber-400 hover:text-amber-600 transition-colors font-bold"
                                         >
                                             <Github className="w-3.5 h-3.5" />
                                             <span>Archived Code</span>
