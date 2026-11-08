@@ -3,16 +3,13 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Button } from "@/components/ui/button";
-import { Mail, Loader2, Send, CheckCircle2, ShieldCheck, Copy, Check, Radio } from "lucide-react";
 import { useState } from "react";
-import { motion } from "framer-motion";
-import confetti from "canvas-confetti";
+import { Check, Copy, ArrowUpRight } from "lucide-react";
 
 const formSchema = z.object({
-    name: z.string().min(2, "Name or Organization required"),
-    email: z.string().email("Please provide a valid contact email"),
-    message: z.string().min(10, "Please outline incident, project, or role details (min 10 chars)"),
+    name: z.string().min(2, "Name is required"),
+    email: z.string().email("Valid email required"),
+    message: z.string().min(10, "Message must be at least 10 characters"),
     _gotcha: z.string().optional(),
 });
 
@@ -34,12 +31,10 @@ export function Contact() {
     });
 
     const handleCopyEmail = () => {
-        const user = "faisvc916";
-        const domain = "gmail.com";
-        const full = `${user}@${domain}`;
+        const full = "faisvc916@gmail.com";
         navigator.clipboard.writeText(full);
         setCopiedEmail(true);
-        setTimeout(() => setCopiedEmail(false), 2500);
+        setTimeout(() => setCopiedEmail(false), 2000);
     };
 
     async function onSubmit(values: FormData) {
@@ -54,200 +49,145 @@ export function Contact() {
             });
 
             const data = await res.json();
-
             if (res.ok && data.success) {
                 setIsSuccess(true);
-                confetti({
-                    particleCount: 75,
-                    spread: 60,
-                    origin: { y: 0.8 },
-                    colors: ["#10b981", "#06b6d4", "#f59e0b"]
-                });
                 reset();
             } else {
-                setErrorMessage(data?.error || "Could not dispatch telemetry. Please copy the email directly.");
+                setErrorMessage(data?.error || "Failed to send message. Please copy email directly.");
             }
         } catch {
-            setErrorMessage("Network issue detected. Please copy the email directly.");
+            setErrorMessage("Network error. Please copy email directly.");
         } finally {
             setIsSubmitting(false);
         }
     }
 
     return (
-        <section className="py-32 relative overflow-hidden" id="contact">
-            {/* Ambient Lighting Glows */}
-            <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[550px] h-[550px] bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none -z-10" />
-            <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none -z-10" />
+        <section className="py-16 max-w-5xl mx-auto px-6 hairline-t" id="contact">
+            <div className="flex items-baseline justify-between border-b border-border pb-3 mb-10">
+                <h2 className="text-sm font-mono uppercase tracking-wider text-muted-foreground font-semibold">
+                    04 / Direct Contact
+                </h2>
+                <span className="text-xs font-mono text-muted-foreground">Inquiries</span>
+            </div>
 
-            <div className="container max-w-7xl mx-auto px-6">
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-                    {/* Left Column */}
-                    <div className="text-center lg:text-left flex flex-col items-center lg:items-start">
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-400 text-xs font-mono tracking-widest uppercase mb-6 font-bold">
-                            <Radio className="w-3.5 h-3.5 animate-pulse text-emerald-600 dark:text-emerald-400" />
-                            <span>Encrypted Channel • Zero Scrape Leaks</span>
-                        </div>
-
-                        <h2 className="text-4xl md:text-6xl font-bold font-heading mb-6 tracking-tight leading-[1.1] text-foreground">
-                            Open for High-Impact <br />
-                            <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-400 bg-clip-text text-transparent">
-                                Cloud & DevOps Roles.
-                            </span>
-                        </h2>
-
-                        <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed max-w-lg">
-                            Looking for a Cloud Monitoring / DevOps / SRE engineer to keep your infrastructure resilient? Transmit an inquiry or dispatch an encrypted email.
+            <div className="grid md:grid-cols-12 gap-10">
+                <div className="md:col-span-5 space-y-6">
+                    <div className="space-y-2">
+                        <h3 className="text-xl font-bold tracking-tight text-foreground">
+                            Let's connect.
+                        </h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                            Available for full-time Cloud Monitoring, DevOps, and SRE opportunities. Send a message or copy my email address directly.
                         </p>
-
-                        <div className="w-full max-w-md space-y-4">
-                            {/* Privacy-Preserved Quick Copy Email Card */}
-                            <div className="p-4 rounded-2xl border border-border bg-card/90 backdrop-blur-xl flex items-center justify-between shadow-lg">
-                                <div className="flex items-center gap-3">
-                                    <div className="h-10 w-10 rounded-xl bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 flex items-center justify-center">
-                                        <Mail className="h-5 w-5" />
-                                    </div>
-                                    <div className="text-left">
-                                        <p className="text-xs text-muted-foreground uppercase font-mono tracking-wider font-semibold">Direct Inbox</p>
-                                        <p className="text-sm font-semibold tracking-wide text-foreground">Protected Routing Address</p>
-                                    </div>
-                                </div>
-                                <Button
-                                    variant="outline"
-                                    size="sm"
-                                    onClick={handleCopyEmail}
-                                    className="rounded-xl gap-2 font-mono text-xs border-emerald-500/30 hover:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 font-bold"
-                                >
-                                    {copiedEmail ? (
-                                        <>
-                                            <Check className="h-3.5 w-3.5 text-emerald-600" />
-                                            <span>Copied!</span>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <Copy className="h-3.5 w-3.5" />
-                                            <span>Copy Email</span>
-                                        </>
-                                    )}
-                                </Button>
-                            </div>
-
-                            {/* Safe Communication Notice */}
-                            <div className="flex items-center gap-2.5 px-3 py-2 text-xs text-muted-foreground font-mono font-medium">
-                                <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                                <span>Zero-Spam Honeypot Guard • Server-side Secret Masking</span>
-                            </div>
-                        </div>
                     </div>
 
-                    {/* Right Column: Contact Form */}
-                    <div className="glass-panel p-8 md:p-10 rounded-3xl relative min-h-[480px] border border-border shadow-2xl bg-card/90 backdrop-blur-2xl">
-                        {isSuccess ? (
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                className="text-center space-y-6 py-12 flex flex-col items-center justify-center h-full"
-                            >
-                                <div className="h-20 w-20 bg-emerald-500/15 border border-emerald-500/30 rounded-2xl flex items-center justify-center text-emerald-600 dark:text-emerald-400 shadow-inner">
-                                    <CheckCircle2 className="h-10 w-10" />
-                                </div>
-                                <div>
-                                    <h3 className="text-2xl font-bold font-heading mb-2 text-foreground">Telemetry Transmitted!</h3>
-                                    <p className="text-muted-foreground max-w-sm text-sm">
-                                        Your message has been securely routed to my primary inbox. I respond to all professional inquiries promptly.
-                                    </p>
-                                </div>
-                                <Button
-                                    variant="outline"
-                                    className="rounded-full px-6 border-emerald-500/30 text-emerald-700 dark:text-emerald-400 hover:bg-emerald-500/10 font-bold"
-                                    onClick={() => setIsSuccess(false)}
-                                >
-                                    Transmit Another Note
-                                </Button>
-                            </motion.div>
-                        ) : (
-                            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                                <input
-                                    type="text"
-                                    tabIndex={-1}
-                                    autoComplete="off"
-                                    className="hidden"
-                                    {...register("_gotcha")}
-                                />
-
-                                <div>
-                                    <label htmlFor="name" className="block text-xs font-mono uppercase tracking-wider text-muted-foreground mb-2 font-semibold">
-                                        Your Name / Company / Team
-                                    </label>
-                                    <input
-                                        id="name"
-                                        placeholder="Engineering Lead / Recruiter"
-                                        {...register("name")}
-                                        className="w-full px-4 py-3.5 rounded-xl bg-background border border-border focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition duration-200 text-sm text-foreground placeholder:text-muted-foreground/60 font-mono"
-                                    />
-                                    {errors.name && (
-                                        <p className="text-xs text-rose-500 mt-1.5 font-mono">{errors.name.message}</p>
-                                    )}
-                                </div>
-
-                                <div>
-                                    <label htmlFor="email" className="block text-xs font-mono uppercase tracking-wider text-muted-foreground mb-2 font-semibold">
-                                        Return Email Address
-                                    </label>
-                                    <input
-                                        id="email"
-                                        type="email"
-                                        placeholder="lead@cloudcorp.io"
-                                        {...register("email")}
-                                        className="w-full px-4 py-3.5 rounded-xl bg-background border border-border focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition duration-200 text-sm text-foreground placeholder:text-muted-foreground/60 font-mono"
-                                    />
-                                    {errors.email && (
-                                        <p className="text-xs text-rose-500 mt-1.5 font-mono">{errors.email.message}</p>
-                                    )}
-                                </div>
-
-                                <div>
-                                    <label htmlFor="message" className="block text-xs font-mono uppercase tracking-wider text-muted-foreground mb-2 font-semibold">
-                                        Inquiry / Cloud Role / Project Details
-                                    </label>
-                                    <textarea
-                                        id="message"
-                                        rows={4}
-                                        placeholder="Discussing an SRE position, AWS infrastructure project, or incident response on-call role..."
-                                        {...register("message")}
-                                        className="w-full px-4 py-3.5 rounded-xl bg-background border border-border focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition duration-200 text-sm text-foreground placeholder:text-muted-foreground/60 resize-none font-mono"
-                                    />
-                                    {errors.message && (
-                                        <p className="text-xs text-rose-500 mt-1.5 font-mono">{errors.message.message}</p>
-                                    )}
-                                </div>
-
-                                {errorMessage && (
-                                    <div className="p-3 rounded-lg bg-rose-500/10 border border-rose-500/30 text-rose-600 dark:text-rose-400 text-xs font-mono">
-                                        {errorMessage}
-                                    </div>
+                    <div className="space-y-2 font-mono text-xs">
+                        <button
+                            onClick={handleCopyEmail}
+                            className="w-full flex items-center justify-between p-3 rounded border border-border bg-card hover:bg-muted transition-colors text-left"
+                        >
+                            <span className="text-foreground">faisvc916@gmail.com</span>
+                            <span className="text-muted-foreground flex items-center gap-1">
+                                {copiedEmail ? (
+                                    <>
+                                        <Check className="w-3.5 h-3.5 text-emerald-500" />
+                                        <span>Copied</span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Copy className="w-3.5 h-3.5" />
+                                        <span>Copy</span>
+                                    </>
                                 )}
-
-                                <Button
-                                    type="submit"
-                                    disabled={isSubmitting}
-                                    className="w-full h-12 rounded-xl text-sm font-semibold tracking-wide bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/20 transition-all flex items-center justify-center gap-2 font-mono"
-                                >
-                                    {isSubmitting ? (
-                                        <>
-                                            <Loader2 className="h-4 w-4 animate-spin" />
-                                            <span>Transmitting Telemetry...</span>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <Send className="h-4 w-4" />
-                                            <span>Transmit Signal</span>
-                                        </>
-                                    )}
-                                </Button>
-                            </form>
-                        )}
+                            </span>
+                        </button>
                     </div>
+
+                    <div className="pt-2 flex items-center gap-4 text-xs font-mono text-muted-foreground">
+                        <a
+                            href="https://linkedin.com/in/fayizvc"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-foreground inline-flex items-center gap-0.5"
+                        >
+                            <span>LinkedIn</span>
+                            <ArrowUpRight className="w-3 h-3" />
+                        </a>
+                        <span>&bull;</span>
+                        <a
+                            href="https://github.com/fxyizvc"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-foreground inline-flex items-center gap-0.5"
+                        >
+                            <span>GitHub</span>
+                            <ArrowUpRight className="w-3 h-3" />
+                        </a>
+                    </div>
+                </div>
+
+                <div className="md:col-span-7">
+                    {isSuccess ? (
+                        <div className="border border-border rounded p-6 bg-card text-center space-y-3 font-mono">
+                            <p className="text-sm font-semibold text-foreground">Message received.</p>
+                            <p className="text-xs text-muted-foreground">Thank you for reaching out. I'll get back to you shortly.</p>
+                            <button
+                                onClick={() => setIsSuccess(false)}
+                                className="text-xs text-foreground underline underline-offset-4 mt-2"
+                            >
+                                Send another note
+                            </button>
+                        </div>
+                    ) : (
+                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 font-mono text-xs">
+                            <input type="text" tabIndex={-1} className="hidden" {...register("_gotcha")} />
+
+                            <div>
+                                <label className="block text-muted-foreground mb-1">NAME</label>
+                                <input
+                                    placeholder="Your name or company"
+                                    {...register("name")}
+                                    className="w-full px-3 py-2.5 rounded border border-border bg-background text-foreground outline-none focus:border-foreground transition-colors"
+                                />
+                                {errors.name && <p className="text-rose-500 text-[11px] mt-1">{errors.name.message}</p>}
+                            </div>
+
+                            <div>
+                                <label className="block text-muted-foreground mb-1">EMAIL</label>
+                                <input
+                                    type="email"
+                                    placeholder="email@example.com"
+                                    {...register("email")}
+                                    className="w-full px-3 py-2.5 rounded border border-border bg-background text-foreground outline-none focus:border-foreground transition-colors"
+                                />
+                                {errors.email && <p className="text-rose-500 text-[11px] mt-1">{errors.email.message}</p>}
+                            </div>
+
+                            <div>
+                                <label className="block text-muted-foreground mb-1">MESSAGE</label>
+                                <textarea
+                                    rows={4}
+                                    placeholder="Role details, project scope, or inquiry..."
+                                    {...register("message")}
+                                    className="w-full px-3 py-2.5 rounded border border-border bg-background text-foreground outline-none focus:border-foreground transition-colors resize-none"
+                                />
+                                {errors.message && <p className="text-rose-500 text-[11px] mt-1">{errors.message.message}</p>}
+                            </div>
+
+                            {errorMessage && (
+                                <p className="text-rose-500 text-[11px]">{errorMessage}</p>
+                            )}
+
+                            <button
+                                type="submit"
+                                disabled={isSubmitting}
+                                className="w-full py-2.5 rounded bg-foreground text-background font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
+                            >
+                                {isSubmitting ? "Sending..." : "Submit Inquiry"}
+                            </button>
+                        </form>
+                    )}
                 </div>
             </div>
         </section>
